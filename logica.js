@@ -2,9 +2,13 @@
 // Variables iniciales para el sistema de acceso
 
 const usuarioCorrecto = "estudiante@cesde.edu.co";
-const claveCorrecta = "12345";
+const claveCorrecta = "cesde123";
 let intentosActuales = 0;
 const limiteDeIntentos = 3;
 
-console.log("Archivo logica.js cargado correctamente.");
-console.log("Esperando interacción del usuario...");
+
+function iniciarProceso() {
+    console.log("Iniciando proceso de login institucional...");
+
+  
+}
