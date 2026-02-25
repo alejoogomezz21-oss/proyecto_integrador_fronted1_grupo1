@@ -2,12 +2,25 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Sistema de Gestión Educativa - Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Educativo | CESDE</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Plataforma Institucional - CESDE</h1>
-    <p>Por favor, abra la consola del navegador (F12) para interactuar con el sistema.</p>
+    <div class="login-container">
+        <div class="login-box">
+            <div class="logo-circle">C</div>
+            <h1>Portal Académico</h1>
+            <p>Gestión de Notas y Asistencia</p>
+            
+            <div class="info-alert">
+                <p><strong>Instrucción:</strong> Al presionar el botón, se iniciará el proceso de validación. 
+                Recuerde tener la <b>Consola (F12)</b> abierta para ver el flujo de datos.</p>
+            </div>
+
+            <button onclick="iniciarProceso()" class="btn-login">Ingresar al Sistema</button>
+        </div>
+    </div>
 
     <script src="logica.js"></script>
 </body>
