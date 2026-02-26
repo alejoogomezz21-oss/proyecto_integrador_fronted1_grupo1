@@ -20,7 +20,7 @@ function validarAcceso(usuarioIngresado, claveIngresada) {
     console.log("Contraseña ingresada: " + claveIngresada);
     
     // 2. Verificar mediante condicionales si los datos coinciden
-    // Usamos las variables globales definidas por el Alejo 
+    // Usamos las variables globales definidas por Alejo 
     if (usuarioIngresado === usuarioCorrecto && claveIngresada === claveCorrecta) {
         alert("Acceso permmitido. Bienvenido");
         console.log("Resultado: Usuario y clave correctos");
