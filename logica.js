@@ -30,8 +30,41 @@ function validarAcceso(usuarioIngresado, claveIngresada) {
         console.log("Resultado: Usuario y clave incorrectos");
         return false; // Devuelve falso para que el ciclo cuente un error
     }
+    
+}
+    
+
+}
+// APORTE INTEGRANTE 4: Ciclo de Intentos y Bloqueo
+ 
+function iniciarProceso() {
+   console.log("Iniciando login institucional...");
+ 
+   // reiniciar el contador cada vez que se pulsa el botón
+   intentosActuales = 0;
+ 
+   // el ciclo se repite mientras no se den los 3 intentos
+   while (intentosActuales < limiteDeIntentos) {
+       
+       let user = prompt("Ingrese el nombre de usuario:");
+       let pass = prompt("Ingrese su contraseña:");
+ 
+       //  función de validación
+       if (validarAcceso(user, pass)) {
+           // Si los datos son válidos, permitir el acceso y salimos del ciclo
+           console.log("Acceso permitido al sistema.");
+           break;
+       } else {
+           // si fallan aumentar el contador de intentos
+           intentosActuales++;
+           console.log("Intentos fallidos: " + intentosActuales + " de " + limiteDeIntentos);
+       }
+ 
+       // si se llega al límite mostrar el mensaje de bloqueo
+       if (intentosActuales === limiteDeIntentos) {
+           alert("Sistema Bloqueado: Ha superado los tres intentos fallidos.");
+           console.log("Estado: Bloqueado por seguridad.");
+       }
+   }
 }
 
-
-  
-}
