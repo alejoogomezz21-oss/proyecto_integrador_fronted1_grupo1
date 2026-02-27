@@ -17,18 +17,11 @@ body {
     max-width: 350px;
 }
 
-.logo-circle {
-    background: #e605da;
-    color: white;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
-    font-weight: bold;
-    margin: 0 auto 20px;
+.logo-institucional {
+    display: block;
+    margin: 0 auto 15px; /* Centra horizontalmente y da espacio abajo */
+    width: 200px; /* Ajusta el tamaño según tu imagen */
+    height: auto;
 }
 
 .info-alert {
