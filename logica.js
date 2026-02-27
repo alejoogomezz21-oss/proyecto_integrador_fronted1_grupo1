@@ -7,9 +7,6 @@ let intentosActuales = 0;
 const limiteDeIntentos = 3;
 
 
-function iniciarProceso() {
-    console.log("Iniciando proceso de ingreso institucional...");
-
     // APORTE INTEGRANTE 3: Función de Validación y Condicionales
 
 function validarAcceso(usuarioIngresado, claveIngresada) {
@@ -32,13 +29,10 @@ function validarAcceso(usuarioIngresado, claveIngresada) {
     }
     
 }
-    
-
-}
 // APORTE INTEGRANTE 4: Ciclo de Intentos y Bloqueo
  
 function iniciarProceso() {
-   console.log("Iniciando login institucional...");
+   console.log("Iniciando proceso de ingreso institucional...");
  
    // reiniciar el contador cada vez que se pulsa el botón
    intentosActuales = 0;
