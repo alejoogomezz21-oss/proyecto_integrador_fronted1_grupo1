@@ -3,22 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Educativo | CESDE</title>
+    <title>Portal Académico | CESDE - Momento 2</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="login-container">
+    <div id="login-container" class="login-container">
         <div class="login-box">
             <img src="logo_Cesde.png" alt="Logo CESDE" class="logo-institucional">
-            <h1>Portal Académico</h1>
-            <p>Gestión de Notas y Asistencia</p>
-            
-            <div class="info-alert">
-                <p><strong>Instrucción:</strong> Al presionar el botón, se iniciará el proceso de validación. 
-                Recuerde tener la <b>Consola (F12)</b> abierta para ver el flujo de datos.</p>
+            <h1>Bienvenido</h1>
+            <p>Inicia sesión para continuar</p>
+
+            <div class="form-login">
+                <input type="text" id="input-usuario" placeholder="Correo Electronico">
+                <input type="password" id="input-clave" placeholder="Contraseña">
+                <button id="btn-ingresar" class="btn-login">Iniciar Sesión</button>
+                <p id="mensaje-error" class="error-msg"></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="dashboard-container" class="dashboard-container hidden">
+        <div class="header-dash">
+            <h2>Gestión Institucional de Usuarios</h2>
+            <button id="btn-logout" class="btn-logout">Cerrar Sesión</button>
+        </div>
+
+        <div class="crud-section">
+            <div class="form-group">
+                <input type="text" id="nombre-usuario" placeholder="Nombre completo del estudiante">
+                <input type="text" id="rol-usuario" placeholder="Rol (Ej: Frontend 1, Backend 1)">
+                <button id="btn-registrar">Registrar en Sistema</button>
             </div>
 
-            <button onclick="iniciarProceso()" class="btn-login">Ingresar al Sistema</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Rol</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="lista-usuarios">
+                    </tbody>
+            </table>
         </div>
     </div>
 
