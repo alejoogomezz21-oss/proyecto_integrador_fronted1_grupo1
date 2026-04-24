@@ -1,64 +1,36 @@
-// Fase 1: Estructura de Lógica JavaScript
-// Variables iniciales para el sistema de acceso
-
+// VARIABLES REUTILIZADAS DEL MOMENTO 1
 const usuarioCorrecto = "estudiante@cesde.edu.co";
-const claveCorrecta = "cesde123";
+const claveCorrecto = "cesde123";
 let intentosActuales = 0;
-const limiteDeIntentos = 3;
+const limiteIntentos = 3;
 
+// SELECTORES DEL DOM
+const loginContainer = document.getElementById('login-container');
+const dashContainer = document.getElementById('dashboard-container');
+const msgError = document.getElementById('mensaje-error');
 
-    // APORTE INTEGRANTE 3: Función de Validación y Condicionales
+// EVENTO DE LOGICA DE ACCESO
+document.getElementById('btn-ingresar').addEventListener('click', () => {
+    const user = document.getElementById('input-usuario').value;
+    const pass = document.getElementById('input-clave').value;
 
-function validarAcceso(usuarioIngresado, claveIngresada) {
-    
-    // 1. Imprimir los datos recibidos por consola
-    console.log(" Proceso de validación ");
-    console.log("Usuario ingresado: " + usuarioIngresado);
-    console.log("Contraseña ingresada: " + claveIngresada);
-    
-    // 2. Verificar mediante condicionales si los datos coinciden
-    // Usamos las variables globales definidas por Alejo 
-    if (usuarioIngresado === usuarioCorrecto && claveIngresada === claveCorrecta) {
-        alert("Acceso permmitido. Bienvenido");
-        console.log("Resultado: Usuario y clave correctos");
-        return true; // Devuelve verdadero para que el ciclo sepa que puede parar
+    if (user === usuarioCorrecto && pass === claveCorrecto) {
+        alert("Acceso permitido. Bienvenido");
+        loginContainer.classList.add('hidden');
+        dashContainer.classList.remove('hidden');
+        renderizarUsuarios(); // Función del Integrante 4
     } else {
-        alert(" Datos incorrectos. Intentelo de nuevo.");
-        console.log("Resultado: Usuario y clave incorrectos");
-        return false; // Devuelve falso para que el ciclo cuente un error
+        intentosActuales++;
+        if (intentosActuales >= limiteIntentos) {
+            msgError.textContent = "Sistema Bloqueado: Superó los 3 intentos.";
+            document.getElementById('btn-ingresar').disabled = true;
+        } else {
+            msgError.textContent = Datos incorrectos. Intento ${intentosActuales} de ${limiteIntentos};
+        }
     }
-    
-}
-// APORTE INTEGRANTE 4: Ciclo de Intentos y Bloqueo
- 
-function iniciarProceso() {
-   console.log("Iniciando proceso de ingreso institucional...");
- 
-   // reiniciar el contador cada vez que se pulsa el botón
-   intentosActuales = 0;
- 
-   // el ciclo se repite mientras no se den los 3 intentos
-   while (intentosActuales < limiteDeIntentos) {
-       
-       let user = prompt("Ingrese el nombre de usuario:");
-       let pass = prompt("Ingrese su contraseña:");
- 
-       //  función de validación
-       if (validarAcceso(user, pass)) {
-           // Si los datos son válidos, permitir el acceso y salimos del ciclo
-           console.log("Acceso permitido al sistema.");
-           break;
-       } else {
-           // si fallan aumentar el contador de intentos
-           intentosActuales++;
-           console.log("Intentos fallidos: " + intentosActuales + " de " + limiteDeIntentos);
-       }
- 
-       // si se llega al límite mostrar el mensaje de bloqueo
-       if (intentosActuales === limiteDeIntentos) {
-           alert("Sistema Bloqueado: Ha superado los tres intentos fallidos.");
-           console.log("Estado: Bloqueado por seguridad.");
-       }
-   }
-}
+});
+
+document.getElementById('btn-logout').addEventListener('click', () => {
+    location.reload(); // Reinicia la app
+});
 
