@@ -1,50 +1,157 @@
+/* Mantener base del Momento 1 */
+
 body {
-    background-color: #f0f2f5;
+
+    background: linear-gradient(180deg, #2b001d 0%, #700161 50%, #2b001d 100%);
+
+    background-attachment: fixed;
+
+    background-size: cover;
+
     display: flex;
+
     justify-content: center;
+
     align-items: center;
-    height: 100vh;
+
+    min-height: 100vh;
+
     font-family: 'Segoe UI', sans-serif;
+
     margin: 0;
+
 }
 
-.login-box {
+.login-box, .dashboard-container {
+
     background: white;
+
     padding: 40px;
+
     border-radius: 15px;
+
     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+
     text-align: center;
-    max-width: 350px;
+
+    max-width: 300px;
+
+    width: 80%;
+
 }
 
-.logo-institucional {
-    display: block;
-    margin: 0 auto 15px; /* Centra horizontalmente y da espacio abajo */
-    width: 200px; /* Ajusta el tamaño según tu imagen */
-    height: auto;
-}
+.logo-institucional { display: block; margin: 0 auto 15px; width: 200px; }
 
-.info-alert {
-    background: #e7f3ff;
-    color: #000000;
-    padding: 15px;
-    border-radius: 8px;
-    font-size: 13px;
-    margin-bottom: 20px;
-    border-left: 5px solid #e605da;
-}
+/* Nuevos estilos para Inputs y Botones */
 
-.btn-login {
-    background: #aa02a2;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 5px;
+input {
+
     width: 100%;
-    cursor: pointer;
-    font-size: 16px;
+
+    padding: 12px;
+
+    margin: 12px 0;
+
+    border: 1px solid #888585;
+
+    border-radius: 10px;
+
+    box-sizing: border-box;
+
 }
 
-.btn-login:hover {
-    background: #700161;
+.btn-login, #btn-registrar {
+
+    background-color: #660361ee;
+
+    color: white;
+
+    border: none;
+
+    padding: 12px;
+
+    width: 100%;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+    transition: 0.3s;
+
+}
+
+.btn-login, #btn-registrar:hover { 
+
+    background-color: #970183; 
+
+}
+
+/* Estilos del CRUD */
+
+.hidden { 
+
+    display: none !important; 
+
+}
+
+.error-msg { 
+
+    color: #e605da; 
+
+    font-size: 13px; 
+
+    margin-top: 10px; 
+
+}
+
+table { 
+
+    width: 100%; 
+
+    border-collapse: collapse; 
+
+    margin-top: 20px; 
+
+}
+
+th, td { 
+
+    padding: 12px; 
+
+    border-bottom: 1px solid #eee; 
+
+    text-align: left; 
+
+}
+
+th { 
+
+    color: #aa02a2; 
+
+}
+
+.btn-delete { 
+
+    background: #9c2731; 
+
+    color: white; border: none; 
+
+    padding: 5px 10px; border-radius: 3px; 
+
+    cursor: pointer; 
+
+}
+
+.btn-logout { 
+
+    background: #161616; 
+
+    color: white; border: none; 
+
+    padding: 8px; cursor: pointer; 
+
+    border-radius: 5px; 
+
 }
