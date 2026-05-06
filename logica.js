@@ -26,7 +26,7 @@ document.getElementById('btn-ingresar').addEventListener('click', () => {
             msgError.textContent = "Sistema Bloqueado: Superó los 3 intentos.";
             document.getElementById('btn-ingresar').disabled = true;
         } else {
-            msgError.textContent = Datos incorrectos. Intento ${intentosActuales} de ${limiteIntentos};
+            msgError.textContent = `Datos incorrectos. Intento ${intentosActuales} de ${limiteIntentos}`;
         }
     }
 });
