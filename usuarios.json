@@ -1,0 +1,14 @@
+[
+  {
+    "nombre": "Estudiante CESDE",
+    "email": "estudiante@cesde.edu.co",
+    "clave": "cesde123",
+    "rol": "Administrador"
+  },
+  {
+    "nombre": "Alejandro Gomez",
+    "email": "alejo@cesde.edu.co",
+    "clave": "alejo123",
+    "rol": "Programador Junior"
+  }
+]
