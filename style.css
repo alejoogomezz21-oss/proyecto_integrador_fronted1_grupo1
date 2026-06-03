@@ -1,9 +1,6 @@
-/* Mantener base del Momento 1 */
-
 body {
 
     background: linear-gradient(180deg, #2b001d 0%, #700161 50%, #2b001d 100%);
-
     background-attachment: fixed;
 
     background-size: cover;
@@ -22,7 +19,9 @@ body {
 
 }
 
-.login-box, .dashboard-container {
+ 
+
+.login-box, .landing-box {
 
     background: white;
 
@@ -40,9 +39,47 @@ body {
 
 }
 
-.logo-institucional { display: block; margin: 0 auto 15px; width: 200px; }
+ 
 
-/* Nuevos estilos para Inputs y Botones */
+.dashboard-container {
+
+    background: white;
+
+    padding: 40px;
+
+    border-radius: 15px;
+
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+
+    text-align: center;
+
+    max-width: 600px;
+
+    width: 90%;
+
+}
+
+ 
+
+.logo-institucional {
+
+    display: block;
+
+    margin: 0 auto 15px;
+
+    width: 200px;
+
+}
+
+ 
+
+.hidden {
+
+    display: none !important;
+
+}
+
+ 
 
 input {
 
@@ -60,7 +97,9 @@ input {
 
 }
 
-.btn-login, #btn-registrar {
+ 
+
+.btn-login, #btn-registrar, .btn-primary {
 
     background-color: #660361ee;
 
@@ -80,78 +119,184 @@ input {
 
     transition: 0.3s;
 
-}
-
-.btn-login, #btn-registrar:hover { 
-
-    background-color: #970183; 
+    font-family: 'Segoe UI', sans-serif;
 
 }
 
-/* Estilos del CRUD */
+ 
 
-.hidden { 
+.btn-login:hover, #btn-registrar:hover, .btn-primary:hover {
 
-    display: none !important; 
-
-}
-
-.error-msg { 
-
-    color: #e605da; 
-
-    font-size: 13px; 
-
-    margin-top: 10px; 
+    background-color: #970183;
 
 }
 
-table { 
+ 
 
-    width: 100%; 
+.btn-link {
 
-    border-collapse: collapse; 
+    background: none;
 
-    margin-top: 20px; 
+    border: none;
 
-}
+    color: #700161;
 
-th, td { 
+    text-decoration: underline;
 
-    padding: 12px; 
+    margin-top: 15px;
 
-    border-bottom: 1px solid #eee; 
+    cursor: pointer;
 
-    text-align: left; 
-
-}
-
-th { 
-
-    color: #aa02a2; 
+    font-size: 14px;
 
 }
 
-.btn-delete { 
+ 
 
-    background: #9c2731; 
+.btn-link:hover {
 
-    color: white; border: none; 
-
-    padding: 5px 10px; border-radius: 3px; 
-
-    cursor: pointer; 
+    color: #970183;
 
 }
 
-.btn-logout { 
+ 
 
-    background: #161616; 
+.error-msg {
 
-    color: white; border: none; 
+    color: #e605da;
 
-    padding: 8px; cursor: pointer; 
+    font-size: 13px;
 
-    border-radius: 5px; 
+    margin-top: 10px;
+
+}
+
+ 
+
+.header-dash {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    border-bottom: 2px solid #eee;
+
+    padding-bottom: 15px;
+
+    margin-bottom: 20px;
+
+}
+
+ 
+
+.header-dash h2 {
+
+    font-size: 20px;
+
+    color: #2b001d;
+
+    margin: 0;
+
+    text-align: left;
+
+}
+
+ 
+
+.form-group {
+
+    margin-bottom: 25px;
+
+}
+
+ 
+
+table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+    margin-top: 20px;
+
+}
+
+ 
+
+th, td {
+
+    padding: 12px;
+
+    border-bottom: 1px solid #eee;
+
+    text-align: left;
+
+}
+
+ 
+
+th {
+
+    color: #aa02a2;
+
+    font-weight: 600;
+
+}
+
+ 
+
+.btn-delete {
+
+    background: #9c2731;
+
+    color: white;
+
+    border: none;
+
+    padding: 6px 12px;
+
+    border-radius: 3px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+}
+
+ 
+
+.btn-delete:hover {
+
+    background: #bd303d;
+
+}
+
+ 
+
+.btn-logout {
+
+    background: #161616;
+
+    color: white;
+
+    border: none;
+
+    padding: 8px 15px;
+
+    cursor: pointer;
+
+    border-radius: 5px;
+
+    transition: 0.2s;
+
+}
+
+ 
+
+.btn-logout:hover {
+
+    background: #333333;
 
 }
