@@ -1,95 +1,263 @@
-// Parte Juanda
-// VARIABLES REUTILIZADAS DEL MOMENTO 1
-const usuarioCorrecto = "estudiante@cesde.edu.co";
-const claveCorrecto = "cesde123";
+// VARIABLES DE CONTROL DE INTENTOS
+
 let intentosActuales = 0;
+
 const limiteIntentos = 3;
 
+ 
+
 // SELECTORES DEL DOM
+
+const landingContainer = document.getElementById('landing-container');
+
 const loginContainer = document.getElementById('login-container');
+
 const dashContainer = document.getElementById('dashboard-container');
+
 const msgError = document.getElementById('mensaje-error');
 
-// EVENTO DE LOGICA DE ACCESO
-document.getElementById('btn-ingresar').addEventListener('click', () => {
-    const user = document.getElementById('input-usuario').value;
-    const pass = document.getElementById('input-clave').value;
-
-    if (user === usuarioCorrecto && pass === claveCorrecto) {
-        alert("Acceso permitido. Bienvenido");
-        loginContainer.classList.add('hidden');
-        dashContainer.classList.remove('hidden');
-        renderizarUsuarios(); // Función del Integrante 4
-    } else {
-        intentosActuales++;
-        if (intentosActuales >= limiteIntentos) {
-            msgError.textContent = "Sistema Bloqueado: Superó los 3 intentos.";
-            document.getElementById('btn-ingresar').disabled = true;
-        } else {
-            msgError.textContent = `Datos incorrectos. Intento ${intentosActuales} de ${limiteIntentos}`;
-        }
-    }
-});
-
-document.getElementById('btn-logout').addEventListener('click', () => {
-    location.reload(); // Reinicia la app
-});
-
-// Parte Nayla
-
-// LÓGICA DE GESTIÓN DE USUARIOS (CRUD)
-let listaUsuarios = JSON.parse(localStorage.getItem('usuariosCesde')) || [];
-
-const btnRegistrar = document.getElementById('btn-registrar');
 const tablaUsuarios = document.getElementById('lista-usuarios');
 
-// Función para mostrar los datos (READ)
-function renderizarUsuarios() {
-    tablaUsuarios.innerHTML = '';
-    
-    listaUsuarios.forEach((usuario, index) => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-            <td>${usuario.nombre}</td>
-            <td>${usuario.rol}</td>
-            <td>
-                <button class="btn-delete" onclick="eliminarUsuario(${index})">Eliminar</button>
-            </td>
-        `;
-        tablaUsuarios.appendChild(row);
-    });
+const btnRegistrar = document.getElementById('btn-registrar');
+
+ 
+
+// El arreglo inicia vacío y se llenará asíncronamente
+
+let listaUsuarios = [];
+
+ 
+
+// FUNCIÓN DE ARRANQUE (MOMENTO 3)
+
+async function iniciarApp() {
+
+    try {
+
+ 
+
+        const response = await fetch("usuarios.json");
+
+        console.log("Status del fetch:", response.status);
+
+ 
+
+        const usuariosIniciales = await response.json();
+
+        console.log("Usuarios semilla cargados desde JSON:", usuariosIniciales);
+
+ 
+
+        localStorage.setItem('usuariosCesde', JSON.stringify(usuariosIniciales));
+
+ 
+
+        listaUsuarios = usuariosIniciales;
+
+       
+
+        console.log("listaUsuarios lista para operar:", listaUsuarios);
+
+ 
+
+    } catch (error) {
+
+        console.error("Error cargando usuarios iniciales:", error);
+
+        listaUsuarios = JSON.parse(localStorage.getItem('usuariosCesde')) || [];
+
+    }
+
 }
 
-// Función para registrar (CREATE)
-btnRegistrar.addEventListener('click', () => {
-    const nombre = document.getElementById('nombre-usuario').value;
-    const rol = document.getElementById('rol-usuario').value;
+ 
 
-    if (nombre && rol) {
-        listaUsuarios.push({ nombre, rol });
-        actualizarStorage();
-        document.getElementById('nombre-usuario').value = '';
-        document.getElementById('rol-usuario').value = '';
-    } else {
-        alert("Por favor complete todos los campos");
-    }
+iniciarApp();
+
+ 
+
+document.getElementById('btn-ir-login').addEventListener('click', () => {
+
+    landingContainer.classList.add('hidden');
+
+    loginContainer.classList.remove('hidden');
+
 });
 
-// Función para borrar (DELETE)
-function eliminarUsuario(index) {
-    if (confirm("¿Desea eliminar este registro?")) {
-        listaUsuarios.splice(index, 1);
-        actualizarStorage();
+ 
+
+document.getElementById('btn-volver-landing').addEventListener('click', () => {
+
+    loginContainer.classList.add('hidden');
+
+    landingContainer.classList.remove('hidden');
+
+});
+
+ 
+
+document.getElementById('btn-ingresar').addEventListener('click', () => {
+
+    const user = document.getElementById('input-usuario').value.trim();
+
+    const pass = document.getElementById('input-clave').value.trim();
+
+ 
+
+    if (listaUsuarios.length === 0) {
+
+        listaUsuarios = JSON.parse(localStorage.getItem('usuariosCesde')) || [];
+
     }
+
+ 
+
+    const usuarioEncontrado = listaUsuarios.find(u => u.email === user && u.clave === pass);
+
+ 
+
+    if (usuarioEncontrado) {
+
+        alert(`Acceso permitido. Bienvenido ${usuarioEncontrado.nombre}`);
+
+        loginContainer.classList.add('hidden');
+
+        dashContainer.classList.remove('hidden');
+
+        renderizarUsuarios();
+
+    } else {
+
+        intentosActuales++;
+
+        if (intentosActuales >= limiteIntentos) {
+
+            msgError.textContent = "Sistema Bloqueado: Superó los 3 intentos.";
+
+            document.getElementById('btn-ingresar').disabled = true;
+
+        } else {
+
+            msgError.textContent = `Datos incorrectos. Intento ${intentosActuales} de ${limiteIntentos}`;
+
+           
+
+            setTimeout(() => {
+
+                msgError.textContent = "";
+
+            }, 3000);
+
+        }
+
+    }
+
+});
+
+ 
+
+document.getElementById('btn-logout').addEventListener('click', () => {
+
+    location.reload();
+
+});
+
+ 
+
+function renderizarUsuarios() {
+
+    tablaUsuarios.innerHTML = '';
+
+   
+
+    listaUsuarios.forEach((usuario, index) => {
+
+        const row = document.createElement('tr');
+
+        row.innerHTML = `
+
+            <td>${usuario.nombre}</td>
+
+            <td>${usuario.rol}</td>
+
+            <td>
+
+                <button class="btn-delete" onclick="eliminarUsuario(${index})">Eliminar</button>
+
+            </td>
+
+        `;
+
+        tablaUsuarios.appendChild(row);
+
+    });
+
 }
+
+ 
+
+btnRegistrar.addEventListener('click', () => {
+
+    const nombreInput = document.getElementById('nombre-usuario');
+
+    const rolInput = document.getElementById('rol-usuario');
+
+   
+
+    const nombre = nombreInput.value.trim();
+
+    const rol = rolInput.value.trim();
+
+ 
+
+    if (nombre && rol) {
+
+        listaUsuarios.push({
+
+            nombre: nombre,
+
+            rol: rol,
+
+            email: nombre.toLowerCase().replace(/\s+/g, '') + "@cesde.edu.co",
+
+            clave: "cesde123"
+
+        });
+
+        actualizarStorage();
+
+        nombreInput.value = '';
+
+        rolInput.value = '';
+
+    } else {
+
+        alert("Por favor complete todos los campos");
+
+    }
+
+});
+
+ 
+
+function eliminarUsuario(index) {
+
+    if (confirm("¿Desea eliminar este registro?")) {
+
+        listaUsuarios.splice(index, 1);
+
+        actualizarStorage();
+
+    }
+
+}
+
+ 
 
 function actualizarStorage() {
+
     localStorage.setItem('usuariosCesde', JSON.stringify(listaUsuarios));
-    renderizarUsuarios();
-}
 
-// Carga inicial si ya está logueado
-if (!dashContainer.classList.contains('hidden')) {
     renderizarUsuarios();
-}
 
+}
