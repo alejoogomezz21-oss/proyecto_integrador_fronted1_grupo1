@@ -1,54 +1,65 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Académico | CESDE - Momento 2</title>
-    <link rel="stylesheet" href="style.css">
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Académico | CESDE - Final</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="login-container" class="login-container">
-        <div class="login-box">
-            <img src="logo_Cesde.png" alt="Logo CESDE" class="logo-institucional">
-            <h1>Bienvenido</h1>
-            <p>Inicia sesión para continuar</p>
 
-            <div class="form-login">
-                <input type="text" id="input-usuario" placeholder="Correo Electronico">
-                <input type="password" id="input-clave" placeholder="Contraseña">
-                <button id="btn-ingresar" class="btn-login">Iniciar Sesión</button>
-                <p id="mensaje-error" class="error-msg"></p>
-            </div>
-        </div>
-    </div>
+   <div id="landing-container" class="landing-container">
+        <div class="landing-box">
+           <img src="logo_Cesde.png" alt="Logo CESDE" class="logo-institucional">
+           <h1>Portal de Gestión Académica</h1>
+            <p>Bienvenido al sistema de administración de estudiantes de Software de la institución.</p>
+            <button id="btn-ir-login" class="btn-primary">Ingresar al Portal</button>
+       </div>
+   </div>
 
-    <div id="dashboard-container" class="dashboard-container hidden">
-        <div class="header-dash">
-            <h2>Gestión Institucional de Usuarios</h2>
-            <button id="btn-logout" class="btn-logout">Cerrar Sesión</button>
-        </div>
+   <div id="login-container" class="login-container hidden">
+        <div class="login-box">
+           <img src="logo_Cesde.png" alt="Logo CESDE" class="logo-institucional">
+           <h1>Bienvenido</h1>
+           <p>Inicia sesión para continuar</p>
 
-        <div class="crud-section">
-            <div class="form-group">
-                <input type="text" id="nombre-usuario" placeholder="Nombre completo del estudiante">
-                <input type="text" id="rol-usuario" placeholder="Rol (Ej: Frontend 1, Backend 1)">
-                <button id="btn-registrar">Registrar en Sistema</button>
-            </div>
+            <div class="form-login">
+               <input type="text" id="input-usuario" placeholder="Correo Electrónico">
+               <input type="password" id="input-clave" placeholder="Contraseña">
+                <button id="btn-ingresar" class="btn-login">Iniciar Sesión</button>
+                <p id="mensaje-error" class="error-msg"></p>
+                <button id="btn-volver-landing" class="btn-link">Volver al inicio</button>
+           </div>
+       </div>
+   </div>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Rol</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody id="lista-usuarios">
-                    </tbody>
-            </table>
-        </div>
-    </div>
+   <div id="dashboard-container" class="dashboard-container hidden">
+        <div class="header-dash">
+           <h2>Gestión Institucional de Usuarios</h2>
+            <button id="btn-logout" class="btn-logout">Cerrar Sesión</button>
+       </div>
 
-    <script src="logica.js"></script>
+       <div class="crud-section">
+           <div class="form-group">
+               <input type="text" id="nombre-usuario" placeholder="Nombre completo del estudiante">
+               <input type="text" id="rol-usuario" placeholder="Rol (Ej: Frontend 1, Backend 1)">
+                <button id="btn-registrar">Registrar en Sistema</button>
+           </div>
+
+           <table>
+                <thead>
+                   <tr>
+                       <th>Nombre</th>
+                       <th>Rol</th>
+                       <th>Acciones</th>
+                   </tr>
+               </thead>
+               <tbody id="lista-usuarios">
+                   </tbody>
+           </table>
+       </div>
+   </div>
+
+    <script src="logica.js"></script>
 </body>
 </html>
